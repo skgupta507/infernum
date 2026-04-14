@@ -1,31 +1,42 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import { useFormState, useFormStatus } from "react-dom";
-import { logOut } from "../actions";
+import { Loader2, LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
+import { useState } from "react";
+import Link from "next/link";
 
-export default function SignOutButtons() {
-  const router = useRouter();
-  const [state, dispatch] = useFormState(logOut, undefined);
+export function SignOutButtons() {
+  const [loading, setLoading] = useState(false);
+
+  const handleSignOut = async () => {
+    setLoading(true);
+    await signOut({ callbackUrl: "/" });
+  };
+
   return (
-    <>
-      <div className="flex justify-center gap-2">
-        <form action={dispatch}>
-          <SignOut />
-        </form>
-        <Button variant={"outline"} onClick={() => router.back()}>
-          Go back
+    <div className="flex flex-col gap-3">
+      <Button
+        onClick={handleSignOut}
+        disabled={loading}
+        variant="ember"
+        size="lg"
+        className="w-full gap-2"
+      >
+        {loading ? (
+          <Loader2 className="w-4 h-4 animate-spin" />
+        ) : (
+          <LogOut className="w-4 h-4" />
+        )}
+        {loading ? "Leaving…" : "Leave the Realm"}
+      </Button>
+      <Link href="/home">
+        <Button variant="outline" size="lg" className="w-full">
+          Stay
         </Button>
-      </div>
-      {state === "SignOut" && (
-        <p className="text-destructive">Failed to sign out</p>
-      )}
-    </>
+      </Link>
+    </div>
   );
 }
 
-function SignOut() {
-  const { pending } = useFormStatus();
-  return <Button disabled={pending}>Sign{pending && "ing"} Out</Button>;
-}
+export default SignOutButtons;
