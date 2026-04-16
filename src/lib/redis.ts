@@ -1,5 +1,5 @@
 /**
- * INFERNUM — Unified Redis Client
+ * Dramzy — Unified Redis Client
  *
  * Supports three modes, auto-detected from environment variables:
  *
@@ -44,7 +44,7 @@ export interface IRedis {
 // ── No-op client ──────────────────────────────────────────────────────────────
 function makeNoopClient(): IRedis {
   const w = (m: string) =>
-    console.warn(`[INFERNUM/Redis] Not configured — ${m}() skipped.`);
+    console.warn(`[Dramzy/Redis] Not configured — ${m}() skipped.`);
   return {
     get: async (k) => { w("get"); return null; },
     set: async () => { w("set"); return null; },
@@ -113,7 +113,7 @@ function makeIoredisClient(url: string): IRedis {
         _client = new Redis(url, { lazyConnect: true, maxRetriesPerRequest: 3 });
         await _client.connect().catch(() => {}); // ignore if already connecting
       } catch (e) {
-        console.error("[INFERNUM/Redis] Failed to initialise ioredis:", e);
+        console.error("[Dramzy/Redis] Failed to initialise ioredis:", e);
         return null;
       }
     }
@@ -162,13 +162,13 @@ function createClient(): IRedis {
     return makeIoredisClient(url);
   }
 
-  console.warn("[INFERNUM/Redis] Unrecognised REDIS_URL format. Redis disabled.");
+  console.warn("[Dramzy/Redis] Unrecognised REDIS_URL format. Redis disabled.");
   return makeNoopClient();
 }
 
 // Global singleton to survive Next.js HMR
-const g = global as typeof global & { __infernum_redis?: IRedis };
-export const redis: IRedis = g.__infernum_redis ?? (g.__infernum_redis = createClient());
+const g = global as typeof global & { __dramzy_redis?: IRedis };
+export const redis: IRedis = g.__dramzy_redis ?? (g.__dramzy_redis = createClient());
 
 // Convenience re-export for easy caching helpers
 export async function getCache<T>(key: string): Promise<T | null> {

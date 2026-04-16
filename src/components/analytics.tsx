@@ -1,5 +1,5 @@
 /**
- * INFERNUM Analytics
+ * Dramzy Analytics
  * 
  * Loglib has been removed. To add analytics, you can integrate:
  * - Vercel Analytics: pnpm add @vercel/analytics  → import { Analytics } from "@vercel/analytics/react"

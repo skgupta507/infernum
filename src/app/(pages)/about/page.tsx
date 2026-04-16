@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "The story behind INFERNUM — forged in darkness by Sunil.",
+  description: "The story behind Dramzy — forged in darkness by Sunil.",
 };
 
 export default function AboutPage() {
@@ -19,7 +19,7 @@ export default function AboutPage() {
             </div>
           </div>
           <h1 className="font-heading font-black text-4xl lg:text-6xl text-white glow-text">
-            ABOUT INFERNUM
+            ABOUT Dramzy
           </h1>
           <p className="font-heading text-xs tracking-[0.4em] text-brand-600">
             WHERE SHADOWS TELL STORIES
@@ -35,13 +35,13 @@ export default function AboutPage() {
           <h2 className="font-heading text-2xl font-bold text-white glow-text-subtle">The Origin</h2>
           <div className="font-sans text-base text-white/70 leading-relaxed space-y-4">
             <p>
-              INFERNUM was not built — it was <em>summoned</em>. From the deepest conviction that Korean drama deserves 
+              Dramzy was not built — it was <em>summoned</em>. From the deepest conviction that Korean drama deserves 
               more than a plain white interface and a list of thumbnails, a vision emerged: a streaming experience as 
               dark, powerful, and emotionally consuming as the stories it carries.
             </p>
             <p>
               Korean drama is not passive entertainment. It is obsession. It is four AM, one more episode, 
-              a storyline that possesses you. INFERNUM was designed to honor that. Every visual choice — 
+              a storyline that possesses you. Dramzy was designed to honor that. Every visual choice — 
               the brand glow, the ash in the dark, the gothic typography — reflects the intensity of the 
               stories within.
             </p>
@@ -65,12 +65,12 @@ export default function AboutPage() {
               {
                 icon: Eye,
                 title: "No Compromises",
-                desc: "INFERNUM streams the finest K-dramas in the highest quality achievable. Because legends deserve legendary treatment.",
+                desc: "Dramzy streams the finest K-dramas in the highest quality achievable. Because legends deserve legendary treatment.",
               },
               {
                 icon: Shield,
                 title: "Free Forever",
-                desc: "Drama is for everyone. INFERNUM will never hide its content behind paywalls. The realm is open to all who dare enter.",
+                desc: "Drama is for everyone. Dramzy will never hide its content behind paywalls. The realm is open to all who dare enter.",
               },
             ].map(({ icon: Icon, title, desc }) => (
               <div
@@ -94,7 +94,7 @@ export default function AboutPage() {
             <p className="font-heading text-xs tracking-[0.3em] text-brand-600 uppercase">Creator</p>
             <h3 className="font-heading text-3xl font-black text-white glow-text">SUNIL</h3>
             <p className="font-sans text-base text-white/60 leading-relaxed max-w-lg">
-              Developer, designer, and Korean drama devotee. Sunil built INFERNUM to prove that 
+              Developer, designer, and Korean drama devotee. Sunil built Dramzy to prove that 
               a streaming platform can be as cinematic and emotionally resonant as the content it delivers. 
               Every pixel of this realm was placed with intention.
             </p>

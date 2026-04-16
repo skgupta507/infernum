@@ -1,13 +1,13 @@
 import type { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
-  name: "INFERNUM",
+  name: "Dramzy",
   description:
-    "Born in darkness, forged in fire. INFERNUM is the premier destination for Korean drama — where obsession becomes ritual and every story burns eternal. Stream the shadows. Feel the flame.",
-  url: "https://infernum.vercel.app",
+    "Stream the finest Korean, Japanese, Chinese, and Thai dramas — free forever. Thousands of titles, zero subscriptions.",
+  url: "https://dramzy.vercel.app",
   links: {
-    twitter: "https://twitter.com/sunilbuilds",
-    github: "https://github.com/sunilbuilds",
+    twitter: "https://twitter.com/dramzy",
+    github: "https://github.com/dramzy",
   },
   mainNav: [
     { title: "Home", href: "/home" },
@@ -16,6 +16,5 @@ export const siteConfig: SiteConfig = {
   ],
 };
 
-export const placeholderImage = (str: string) => {
-  return `https://placehold.co/400x600/111111/ffffff?font=montserrat&text=${encodeURI(str)}`;
-};
+export const placeholderImage = (str: string) =>
+  `https://placehold.co/400x600/1a2035/475569?font=inter&text=${encodeURI(str)}`;

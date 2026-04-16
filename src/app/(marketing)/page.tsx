@@ -19,7 +19,7 @@ export default function MarketingPage() {
           <div className="w-7 h-7 rounded bg-brand-600 flex items-center justify-center">
             <Zap className="w-4 h-4 text-white fill-white" strokeWidth={2} />
           </div>
-          <span className="font-heading text-xl text-white tracking-widest">INFERNUM</span>
+          <span className="font-heading text-xl text-white tracking-widest">DRAMZY</span>
         </div>
         <div className="flex items-center gap-3">
           <Link href="/home" className="text-sm text-muted-foreground hover:text-white transition-colors">Browse</Link>
@@ -36,8 +36,8 @@ export default function MarketingPage() {
             </Badge>
 
             <h1 className="font-heading text-6xl lg:text-8xl text-white leading-none tracking-wide">
-              <span className="block">STREAM</span>
-              <span className="block text-brand-400 glow-text-subtle">THE FINEST</span>
+              <span className="block">DRAMZY</span>
+              <span className="block text-brand-400 glow-text-subtle">STREAM FREE</span>
               <span className="block">K-DRAMAS</span>
             </h1>
 

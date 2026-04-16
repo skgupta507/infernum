@@ -3,20 +3,20 @@ import { Flame } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "INFERNUM Privacy Policy — how we handle your data in the dark.",
+  description: "Dramzy Privacy Policy — how we handle your data in the dark.",
 };
 
 const sections = [
   {
     title: "Data We Collect",
-    content: `When you create an account or use INFERNUM, we may collect:
+    content: `When you create an account or use Dramzy, we may collect:
     
 • Account information: your name and email address (via Google OAuth)
 • Usage data: dramas you watch, watchlist contents, episode progress
 • Technical data: IP address, browser type, device type, and cookies
 • Activity logs: pages visited, features used, and session duration
 
-We do not collect payment information as INFERNUM is free to use.`,
+We do not collect payment information as Dramzy is free to use.`,
   },
   {
     title: "How We Use Your Data",
@@ -31,7 +31,7 @@ We do not sell, trade, or rent your personal information to third parties.`,
   },
   {
     title: "Cookies",
-    content: `INFERNUM uses essential cookies to:
+    content: `Dramzy uses essential cookies to:
 
 • Keep you signed in across sessions
 • Remember your watchlist and viewing preferences
@@ -41,7 +41,7 @@ You may disable cookies in your browser settings. Doing so may limit some functi
   },
   {
     title: "Third-Party Services",
-    content: `INFERNUM integrates with the following third-party services:
+    content: `Dramzy integrates with the following third-party services:
 
 • Google OAuth — for authentication (subject to Google's Privacy Policy)
 • Vercel — for hosting and analytics (subject to Vercel's Privacy Policy)
@@ -67,7 +67,7 @@ To exercise any of these rights, please contact us directly.`,
   },
   {
     title: "Changes to This Policy",
-    content: `We may update this Privacy Policy periodically. When we do, we will revise the date at the top of this page. Continued use of INFERNUM after changes constitutes acceptance of the revised policy.`,
+    content: `We may update this Privacy Policy periodically. When we do, we will revise the date at the top of this page. Continued use of Dramzy after changes constitutes acceptance of the revised policy.`,
   },
 ];
 
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
             Last updated: January 2025
           </p>
           <p className="font-sans text-base text-white/60 leading-relaxed">
-            INFERNUM is committed to protecting your privacy. This policy explains what data we collect, 
+            Dramzy is committed to protecting your privacy. This policy explains what data we collect, 
             how we use it, and your rights as a user of our platform.
           </p>
         </div>
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
         <div className="infernal-divider" />
 
         <p className="font-sans text-xs text-muted-foreground text-center">
-          INFERNUM — Forged in darkness by Sunil. All rights reserved.
+          Dramzy — Forged in darkness by Sunil. All rights reserved.
         </p>
       </div>
     </div>

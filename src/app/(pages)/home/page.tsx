@@ -106,7 +106,7 @@ async function HeroBanner() {
         <div className="size-full flex items-center justify-center">
           <div className="text-center space-y-3">
             <Zap className="w-10 h-10 text-brand-600 mx-auto fill-brand-600" strokeWidth={2} />
-            <p className="font-heading text-2xl text-white tracking-widest">INFERNUM</p>
+            <p className="font-heading text-2xl text-white tracking-widest">Dramzy</p>
             <p className="text-xs text-muted-foreground">API connecting… check your XYRA_API_KEY</p>
           </div>
         </div>

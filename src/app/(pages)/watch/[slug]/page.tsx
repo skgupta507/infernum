@@ -31,7 +31,7 @@ export async function generateMetadata(
     const titleText = `${info.title} — Episode ${info.number}`;
     return {
       title: titleText,
-      description: `Watch ${info.title} episode ${info.number} on INFERNUM.`,
+      description: `Watch ${info.title} episode ${info.number} on Dramzy.`,
     };
   } catch {
     const { title, description } = await parent;
@@ -61,7 +61,7 @@ export default async function Page({ params }: PageProps) {
             Back to Series
           </Link>
           <span className="text-xs text-muted-foreground font-heading tracking-widest hidden sm:block">
-            INFERNUM
+            Dramzy
           </span>
         </div>
 

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: { default: siteConfig.name, template: `%s • ${siteConfig.name}` },
   description: siteConfig.description,
-  keywords: ["Korean Drama", "K-Drama", "INFERNUM", "Watch Online", "Streaming"],
+  keywords: ["Korean Drama", "K-Drama", "Dramzy", "Watch Online", "Streaming"],
   authors: [{ name: "Sunil" }],
   creator: "Sunil",
   openGraph: { type: "website", locale: "en_US", url: siteConfig.url, title: siteConfig.name, description: siteConfig.description, siteName: siteConfig.name },

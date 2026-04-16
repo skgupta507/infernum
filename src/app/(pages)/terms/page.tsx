@@ -3,19 +3,19 @@ import { Flame } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
-  description: "INFERNUM Terms and Conditions of Use.",
+  description: "Dramzy Terms and Conditions of Use.",
 };
 
 const sections = [
   {
     title: "Acceptance of Terms",
-    content: `By accessing or using INFERNUM ("the Platform"), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, you may not access or use the Platform.
+    content: `By accessing or using Dramzy ("the Platform"), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, you may not access or use the Platform.
 
-These terms apply to all visitors, users, and others who access or use INFERNUM.`,
+These terms apply to all visitors, users, and others who access or use Dramzy.`,
   },
   {
     title: "Use of the Platform",
-    content: `You may use INFERNUM for personal, non-commercial streaming of Korean drama content. You agree NOT to:
+    content: `You may use Dramzy for personal, non-commercial streaming of Korean drama content. You agree NOT to:
 
 • Reproduce, distribute, or publicly display any content without authorization
 • Use automated systems or bots to access, scrape, or crawl the Platform
@@ -24,19 +24,19 @@ These terms apply to all visitors, users, and others who access or use INFERNUM.
 • Use the Platform for any illegal or unauthorized purpose
 • Impersonate any person or entity
 
-INFERNUM reserves the right to terminate access for violations of these terms.`,
+Dramzy reserves the right to terminate access for violations of these terms.`,
   },
   {
     title: "Content Rights",
-    content: `All drama content available on INFERNUM is sourced through third-party APIs and providers. INFERNUM does not host, own, or claim copyright over streaming video content. We are an aggregator and interface platform.
+    content: `All drama content available on Dramzy is sourced through third-party APIs and providers. Dramzy does not host, own, or claim copyright over streaming video content. We are an aggregator and interface platform.
 
-INFERNUM's original content — including branding, UI design, code, and copy — is the intellectual property of INFERNUM and its creator.
+Dramzy's original content — including branding, UI design, code, and copy — is the intellectual property of Dramzy and its creator.
 
-If you are a rights holder and believe content on INFERNUM infringes your copyright, please contact us for prompt review and removal.`,
+If you are a rights holder and believe content on Dramzy infringes your copyright, please contact us for prompt review and removal.`,
   },
   {
     title: "Account Responsibilities",
-    content: `If you create an account on INFERNUM:
+    content: `If you create an account on Dramzy:
 
 • You are responsible for maintaining the security of your account
 • You are responsible for all activity that occurs under your account
@@ -44,11 +44,11 @@ If you are a rights holder and believe content on INFERNUM infringes your copyri
 • You must provide accurate and complete information
 • You must notify us immediately of any unauthorized use
 
-INFERNUM is not liable for losses resulting from unauthorized use of your account.`,
+Dramzy is not liable for losses resulting from unauthorized use of your account.`,
   },
   {
     title: "Platform Limitations",
-    content: `INFERNUM is provided "as is" without warranties of any kind. We do not guarantee:
+    content: `Dramzy is provided "as is" without warranties of any kind. We do not guarantee:
 
 • Uninterrupted or error-free access to the Platform
 • The accuracy or completeness of drama metadata
@@ -59,15 +59,15 @@ Streaming sources are provided by third parties and may occasionally be unavaila
   },
   {
     title: "Limitation of Liability",
-    content: `To the maximum extent permitted by law, INFERNUM and its creator shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the Platform, including but not limited to loss of data or service interruption.`,
+    content: `To the maximum extent permitted by law, Dramzy and its creator shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the Platform, including but not limited to loss of data or service interruption.`,
   },
   {
     title: "Modifications to Terms",
-    content: `INFERNUM reserves the right to modify these Terms at any time. Changes take effect upon posting to the Platform. Continued use after changes constitutes acceptance of the modified terms. We encourage you to review these Terms periodically.`,
+    content: `Dramzy reserves the right to modify these Terms at any time. Changes take effect upon posting to the Platform. Continued use after changes constitutes acceptance of the modified terms. We encourage you to review these Terms periodically.`,
   },
   {
     title: "Governing Law",
-    content: `These Terms are governed by and construed in accordance with applicable laws. Any disputes arising from use of INFERNUM shall be resolved through good-faith negotiation.`,
+    content: `These Terms are governed by and construed in accordance with applicable laws. Any disputes arising from use of Dramzy shall be resolved through good-faith negotiation.`,
   },
 ];
 
@@ -86,7 +86,7 @@ export default function TermsPage() {
           </h1>
           <p className="text-muted-foreground text-sm font-sans">Last updated: January 2025</p>
           <p className="font-sans text-base text-white/60 leading-relaxed">
-            Please read these Terms and Conditions carefully before using INFERNUM. 
+            Please read these Terms and Conditions carefully before using Dramzy. 
             Your use of the Platform constitutes your agreement to these terms.
           </p>
         </div>
@@ -109,7 +109,7 @@ export default function TermsPage() {
         <div className="infernal-divider" />
 
         <p className="font-sans text-xs text-muted-foreground text-center">
-          INFERNUM — Forged in darkness by Sunil. All rights reserved.
+          Dramzy — Forged in darkness by Sunil. All rights reserved.
         </p>
       </div>
     </div>

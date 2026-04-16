@@ -1,184 +1,212 @@
-# 🔥 INFERNUM — Korean Drama Streaming Platform
+# 🎬 Dramzy
 
-> *"Born in darkness, stream the fire."*
+**Stream the finest Korean, Japanese, Chinese, and Thai dramas — free forever.**
 
-INFERNUM is a premium Korean drama streaming platform rebuilt with a dark supernatural identity. Powered by Next.js 15, featuring a crimson/ember aesthetic, animated ash particles, and a cinematic UI designed to feel as intense as the dramas within.
-
----
-
-## 🎨 Brand Identity
-
-| Element | Value |
-|---------|-------|
-| **Name** | INFERNUM |
-| **Tagline** | "Born in Darkness, Stream the Fire" |
-| **Colors** | `#050000` (abyss black) + `#8B0000` (deep crimson) + `#FF4500` (ember) |
-| **Typography** | Cinzel (headings, gothic serifs) + Crimson Pro (body, elegant) |
-| **Theme** | Dark demon / fire / ash / shadow |
-| **Creator** | Sunil |
-
-### Slogans
-- *"Born in Darkness, Stream the Fire"*
-- *"Where Shadows Tell Stories"*
-- *"Unleash the Drama Within"*
-- *"Enter the Realm of Obsession"*
-- *"Arise from the Shadows. Forged in Darkness by Sunil."*
+Dramzy is a full-stack K-drama streaming platform built with Next.js 15, powered by the Xyra Stream API, and styled for a premium cinematic experience. Watchlists, progress tracking, OAuth authentication, and a seamless video player — all in one.
 
 ---
 
-## ⚙️ Dependency Upgrades
+## ✨ Features
 
-All dependencies upgraded to latest stable versions:
+### 🎥 Streaming
+- **HLS video player** — ReactPlayer with hardware-accelerated playback
+- **Resume watching** — progress saved per episode, auto-seek on return
+- **Embed fallback** — if no direct stream, falls back to embedded player
+- **"No stream" state** — friendly UI when a source is unavailable
 
-| Package | Old | New |
-|---------|-----|-----|
-| `next` | 14.2.5 | ^15.3.0 |
-| `react` | ^18.3.1 | ^19.1.0 |
-| `react-dom` | ^18.3.1 | ^19.1.0 |
-| `drizzle-orm` | ^0.32.0 | ^0.41.0 |
-| `drizzle-kit` | ^0.23.0 | ^0.30.4 |
-| `next-auth` | 5.0.0-beta.19 | 5.0.0-beta.25 |
-| `lucide-react` | ^0.412.0 | ^0.488.0 |
-| `framer-motion` | ^11.3.8 | ^12.6.5 |
-| `sonner` | ^1.5.0 | ^2.0.3 |
-| `embla-carousel` | 8.1.7 | ^8.6.0 |
-| `tailwind-merge` | ^2.4.0 | ^3.2.0 |
+### 🏠 Homepage
+- **Hero carousel** — featured dramas with cinematic backdrop
+- **Recently Added** — latest K-drama episodes (falls back to `/latest` when `latest_kdrama` is unavailable)
+- **Trending Now** — most popular dramas this week
+- **My Watchlist** — personalized row for logged-in users
 
-### Breaking Changes Fixed
-- ✅ Next.js 15: `params` is now a `Promise` — all page components updated to `await params`
-- ✅ React 19: updated all component patterns for compatibility
-- ✅ Drizzle ORM: updated query patterns for new API
-- ✅ Removed `next-pwa` (incompatible with Next.js 15), removed `@irsyadadl/paranoid`, `@loglib/tracker`, `@unkey/nextjs`
+### 🎭 Drama Pages
+- **Cinematic backdrop** — blurred poster background
+- **Full metadata** — title, genres, status, release year, other names, description
+- **Episode grid** — scrollable horizontal list with thumbnails
+- **Stats bar** — episode count, status, year, primary genre
+- **Also Known As** — alternate titles
+- **More Like This** — 8 related dramas from trending
+- **Watchlist button** — add/remove, shows "Completed" when finished
+- **Continue / Watch from Start** — smart button based on progress
+
+### 🔍 Search
+- Full-text search across the drama catalog
+- Grid results with poster cards
+- Empty state with helpful message
+
+### 👤 Auth
+- **Google OAuth** — sign in with Google
+- **Discord OAuth** — sign in with Discord
+- Session-based watchlist and progress tracking
+- Cookie-based watchlist for guests
+
+### 📋 Watchlist & Progress
+- Add/remove dramas from watchlist
+- Track watching / plan-to-watch / completed / dropped / on-hold
+- Per-episode progress saved in seconds (auto-resume)
+
+### 📄 Pages
+| Route | Description |
+|-------|-------------|
+| `/` | Landing page |
+| `/home` | Main dashboard |
+| `/popular` | Popular dramas with infinite scroll |
+| `/search` | Search page |
+| `/drama/[slug]` | Drama detail + episodes |
+| `/watch/[slug]` | Video player |
+| `/about` | About Dramzy |
+| `/privacy` | Privacy Policy |
+| `/terms` | Terms & Conditions |
+| `/dmca` | DMCA Takedown Policy |
+| `/signin` | OAuth sign in |
+| `/signout` | Sign out |
 
 ---
 
-## 🗂️ Project Structure
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 15 (App Router, RSC) |
+| UI | React 19, Tailwind CSS 3, shadcn/ui |
+| Fonts | Bebas Neue (headings), Inter (body) |
+| Database | Neon PostgreSQL (serverless) |
+| ORM | Drizzle ORM |
+| Auth | NextAuth.js v5 (Google + Discord OAuth) |
+| Video | ReactPlayer (HLS + embed fallback) |
+| Cache | Redis (Upstash REST or standard redis://) |
+| API | Xyra Stream API (dramacool data) |
+| Deployment | Vercel |
+
+---
+
+## ⚙️ Setup
+
+### 1. Install dependencies
+
+```bash
+npm install
+# or
+pnpm install
+```
+
+### 2. Configure environment variables
+
+```bash
+cp .env.example .env.local
+```
+
+Fill in `.env.local`:
+
+```env
+# Required
+DATABASE_URL=postgresql://user:pass@host.neon.tech/dramzy?sslmode=require
+NEXTAUTH_SECRET=your-secret-here          # openssl rand -base64 32
+XYRA_API_KEY=key1                         # from Xyra Discord
+
+# At least one OAuth provider
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+DISCORD_CLIENT_ID=
+DISCORD_CLIENT_SECRET=
+
+# Optional
+REDIS_URL=https://your-instance.upstash.io
+REDIS_TOKEN=your-token
+NEXT_PUBLIC_APP_URL=http://localhost:1999
+```
+
+### 3. Run database migrations
+
+```bash
+npm run db:generate
+npm run db:push
+```
+
+### 4. Start dev server
+
+```bash
+npm run dev          # runs on :1999
+```
+
+---
+
+## 🔑 API Configuration
+
+Dramzy uses the **Xyra Stream API** for all drama data and streaming.
+
+| Endpoint | Used for |
+|----------|----------|
+| `GET /home` | Hero carousel |
+| `GET /latest_kdrama` | Recently aired episodes |
+| `GET /latest` | Fallback for recently aired |
+| `GET /popular` | Trending dramas |
+| `GET /search` | Full-text search |
+| `GET /info?id=` | Drama detail + episode list |
+| `GET /stream?episode_id=` | HLS sources + subtitles |
+
+Get your free API key from the [Xyra Discord](https://github.com/junioralive/dramacool-api).
+
+---
+
+## 📁 Project Structure
 
 ```
 src/
 ├── app/
-│   ├── (auth)/
-│   │   ├── signin/          # Dark-themed sign in with crimson card
-│   │   └── signout/         # Confirmation modal
-│   ├── (marketing)/
-│   │   └── page.tsx         # Landing page with hero + features
-│   ├── (pages)/
-│   │   ├── layout.tsx       # Ash background + header + footer
-│   │   ├── home/            # Homepage with hero carousel + sections
-│   │   ├── drama/[slug]/    # Drama detail with backdrop + episode grid
-│   │   ├── watch/[slug]/    # Video player with cinematic controls
-│   │   ├── search/          # Live search page
-│   │   ├── popular/         # Infinite scroll popular grid
-│   │   ├── about/           # Platform story + creator credit
-│   │   ├── privacy/         # Privacy policy
-│   │   └── terms/           # Terms & conditions
-│   └── layout.tsx           # Root layout (dark-forced, Cinzel + Crimson Pro)
+│   ├── (auth)/          signin, signout
+│   ├── (marketing)/     landing page
+│   └── (pages)/         home, popular, search, drama, watch, about, privacy, terms, dmca
 ├── components/
-│   ├── card.tsx             # Drama card with flame hover + play overlay
-│   ├── layout/
-│   │   ├── site-header.tsx  # Scroll-reactive navbar with glow logo
-│   │   ├── site-footer.tsx  # Cinematic footer with Sunil signature
-│   │   └── main-nav.tsx     # Active-state nav links
-│   └── ui/
-│       ├── ash-background.tsx   # Canvas ash particle animation
-│       ├── section-heading.tsx  # Flame icon + cinzel heading
-│       ├── button.tsx           # Crimson variants incl. "ember" pulse
-│       ├── badge.tsx            # Genre/tag badges
-│       ├── input.tsx            # Dark-bordered inputs
-│       └── skeleton.tsx         # Crimson-tinted loading skeletons
-├── styles/
-│   └── globals.css          # Full INFERNUM theme: glow, ash, smoke, scrollbars
-└── config/
-    └── site.ts              # INFERNUM branding + nav config
+│   ├── layout/          site-header, site-footer, main-nav, mobile-nav
+│   ├── ui/              button, badge, card, input, skeleton, section-heading, api-unavailable
+│   ├── card.tsx         drama card with hover play overlay
+│   ├── react-player.tsx HLS video player
+│   └── video-player-wrapper.tsx  client wrapper (ssr: false)
+├── lib/
+│   ├── dramacool.ts     Xyra API client (all endpoints)
+│   ├── slug.ts          ID normalisation utilities
+│   ├── redis.ts         Upstash / ioredis / noop client
+│   ├── auth.ts          NextAuth config
+│   └── helpers/server.ts  watchlist helpers
+├── db/
+│   └── schema/          Drizzle schema (series, episode, watchList, progress)
+└── styles/
+    └── globals.css      Dramzy theme
 ```
 
 ---
 
 ## 🎨 Design System
 
-### Color Palette
-```css
---background:    #050000   /* Pure abyss */
---foreground:    #f2f2f2   /* Pale ash */
---primary:       #8B0000   /* Deep crimson */
---accent:        #a80000   /* Ember red */
---muted:         #1a0000   /* Shadow */
-```
-
-### CSS Utilities
-| Class | Effect |
-|-------|--------|
-| `.glow-text` | Full crimson text glow |
-| `.glow-text-subtle` | Soft red text shadow |
-| `.glow-border` | Red glowing border |
-| `.card-flame` | Flame overlay on hover |
-| `.btn-glow` | Pulsing red button glow |
-| `.infernal-divider` | Gradient red divider line |
-| `.smoke-bg` | Smoke/ember background |
-| `.vignette` | Cinematic edge darkening |
-
-### Fonts
-- **Cinzel** — All headings, navigation, UI labels. Gothic serif, Roman character. Conveys power.
-- **Crimson Pro** — Body text, descriptions, subtitles. Elegant, readable, literary.
+| Token | Value |
+|-------|-------|
+| Background | `#0f1117` (dark slate) |
+| Surface | `#161b27` |
+| Brand | `#0ea5e9` (electric blue) |
+| Text | `#e2e8f0` |
+| Muted | `#64748b` |
+| Heading font | Bebas Neue |
+| Body font | Inter |
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Deployment (Vercel)
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Set up environment variables
-cp .env.example .env.local
-# Fill in: DATABASE_URL, AUTH_SECRET, AUTH_GOOGLE_ID, AUTH_GOOGLE_SECRET, KV_*
-
-# Run database migrations
-pnpm db generate
-pnpm db push   # or migrate
-
-# Start development server
-pnpm dev       # runs on :1999
+# Set env vars in Vercel dashboard, then:
+vercel deploy
 ```
 
----
-
-## 🌐 Pages Overview
-
-| Route | Description |
-|-------|-------------|
-| `/` | Landing page — hero with Enter the Realm CTA |
-| `/home` | Main app — hero carousel, watchlist, trending, recent |
-| `/drama/[slug]` | Drama detail — backdrop, episodes, watchlist |
-| `/watch/[slug]` | Video player — cinematic controls, progress tracking |
-| `/search` | Full-text search with grid results |
-| `/popular` | Popular dramas with infinite scroll |
-| `/about` | Platform story + Sunil creator credit |
-| `/privacy` | Privacy policy |
-| `/terms` | Terms & conditions |
-| `/signin` | OAuth sign in — crimson card |
-| `/signout` | Sign out confirmation |
+Required Vercel env vars: same as `.env.example` — `DATABASE_URL`, `NEXTAUTH_SECRET`, `XYRA_API_KEY`, OAuth credentials.
 
 ---
 
-## ✨ Features
+## ⚖️ Legal
 
-- 🔥 **Animated ash particles** — Canvas-based floating ash/ember background
-- 🎬 **Cinematic hero carousel** — Full-width banner with gradient overlays
-- 💀 **Flame card hover** — Cards glow red with play button overlay
-- 🌑 **Scroll-reactive navbar** — Transparent → solid on scroll
-- 📺 **Episode progress tracking** — Continue watching from where you left off
-- ❤️ **Watchlist system** — Add/remove series with server actions
-- 🔍 **Search** — Live search across the drama catalog
-- 📱 **Fully responsive** — Mobile-first design
-- 🌑 **Forced dark mode** — INFERNUM is always dark. Always.
+Dramzy aggregates publicly available links and metadata. We do not host video files. See `/dmca` for our takedown policy.
 
 ---
 
-## 🦶 Footer Signature
-
-> *"Arise from the shadows. Forged in darkness by* ***SUNIL****."*
-
----
-
-*INFERNUM — Where shadows tell stories.*
+*Crafted by **Sunil** · Powered by Xyra Stream API*

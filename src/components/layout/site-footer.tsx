@@ -16,6 +16,7 @@ const LEGAL_LINKS = [
   { label: "About", href: "/about" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms & Conditions", href: "/terms" },
+              { label: "DMCA", href: "/dmca" },
 ];
 
 export function SiteFooter() {
@@ -29,7 +30,7 @@ export function SiteFooter() {
               <div className="w-6 h-6 rounded bg-brand-600 flex items-center justify-center">
                 <Zap className="w-3.5 h-3.5 text-white fill-white" strokeWidth={2} />
               </div>
-              <span className="font-heading text-lg text-white tracking-widest">INFERNUM</span>
+              <span className="font-heading text-lg text-white tracking-widest">DRAMZY</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               The premier destination for Korean drama. Stream romance, thriller, revenge, and fantasy — free forever.
@@ -79,10 +80,10 @@ export function SiteFooter() {
 
         <div className="pt-6 border-t border-border/20 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} INFERNUM. All rights reserved.
+            © {new Date().getFullYear()} Dramzy. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground/50 tracking-widest">
-            CRAFTED BY <span className="text-brand-500">SUNIL</span>
+            CRAFTED BY <span className="text-brand-500">SUNIL</span> • DRAMZY
           </p>
         </div>
       </div>

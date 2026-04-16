@@ -43,7 +43,7 @@ export function SiteHeader({ sticky = true, className, session }: SiteHeaderProp
             <Zap className="w-4 h-4 text-white fill-white" strokeWidth={2} />
           </div>
           <span className="font-heading text-xl text-white tracking-widest group-hover:glow-text-subtle transition-all">
-            INFERNUM
+            Dramzy
           </span>
         </Link>
 

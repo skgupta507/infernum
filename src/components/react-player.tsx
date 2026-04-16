@@ -21,7 +21,7 @@ export default function ReactPlayerAsVideo({
   seekTo,
   dramaId,
 }: Props) {
-  const storageName = `infernum-${slug}-${number}`;
+  const storageName = `dramzy-${slug}-${number}`;
   const initialMedia = JSON.stringify({
     loadedSeconds: 0,
     playedSeconds: 0,
@@ -34,7 +34,7 @@ export default function ReactPlayerAsVideo({
 
   const [isSeeking, setIsSeeking] = useState(false);
   const [progress, setProgress] = useState<OnProgressProps>(parsedStoredItem);
-  const [playbackRate, setPlaybackRate] = useLocalStorage("infernum-playbackrate", "1");
+  const [playbackRate, setPlaybackRate] = useLocalStorage("dramzy-playbackrate", "1");
 
   const seekSeconds = seekTo ?? progress.playedSeconds;
   const [_, startTransition] = useTransition();

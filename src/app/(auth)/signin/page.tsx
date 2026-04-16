@@ -6,7 +6,7 @@ import { UserAuthForm } from "./user-auth-form";
 
 export const metadata: Metadata = {
   title: "Sign In",
-  description: "Sign in to INFERNUM to track watchlists and save progress.",
+  description: "Sign in to Dramzy to track watchlists and save progress.",
 };
 
 export default function SignInPage() {
@@ -33,7 +33,7 @@ export default function SignInPage() {
               </div>
             </div>
             <div>
-              <h1 className="font-heading text-2xl text-white tracking-widest">INFERNUM</h1>
+              <h1 className="font-heading text-2xl text-white tracking-widest">DRAMZY</h1>
               <p className="text-xs text-muted-foreground mt-1">Sign in to your account</p>
             </div>
           </div>
