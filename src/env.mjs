@@ -10,12 +10,16 @@ export const env = createEnv({
   server: {
     DATABASE_URL: z.string().url(),
     NEXTAUTH_SECRET: z.string().min(1),
+<<<<<<< HEAD
 
     // OAuth providers — both optional so the app boots with just one
+=======
+>>>>>>> dd595a859d077d248526844f2914acef2ca871f2
     DISCORD_CLIENT_SECRET: z.string().min(1).optional(),
     DISCORD_CLIENT_ID: z.string().min(1).optional(),
     GOOGLE_CLIENT_SECRET: z.string().min(1).optional(),
     GOOGLE_CLIENT_ID: z.string().min(1).optional(),
+<<<<<<< HEAD
 
     // Xyra Stream API
     XYRA_API_KEY: z.string().min(1),
@@ -31,6 +35,13 @@ export const env = createEnv({
     // Optional
     SLACK_WEBHOOK_URL: z.string().url().optional(),
     API_SECRET_KEY: z.string().optional(),
+=======
+    API_URL: z.string().url(),
+    SLACK_WEBHOOK_URL: z.string().url().optional(),
+    // Redis (Upstash or any Redis-compatible URL)
+    REDIS_URL: z.string().url().optional(),
+    REDIS_TOKEN: z.string().optional(),
+>>>>>>> dd595a859d077d248526844f2914acef2ca871f2
   },
   client: {
     NEXT_PUBLIC_APP_URL: z.string().url().optional(),

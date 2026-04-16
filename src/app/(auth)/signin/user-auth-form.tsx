@@ -38,7 +38,11 @@ export function UserAuthForm() {
 
   return (
     <div className="space-y-3">
+<<<<<<< HEAD
       <p className="text-center text-xs text-muted-foreground font-heading tracking-widest mb-4">
+=======
+      <p className="text-center text-xs text-muted-foreground font-cinzel tracking-widest mb-4">
+>>>>>>> dd595a859d077d248526844f2914acef2ca871f2
         SIGN IN WITH
       </p>
 
