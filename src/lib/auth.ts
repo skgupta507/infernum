@@ -5,7 +5,6 @@ import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
 
 import { db } from "@/db";
-
 import { env } from "@/env.mjs";
 import { notify } from "./webhooks/slack";
 import { accounts, sessions, users, verificationTokens } from "@/db/schema";
@@ -19,7 +18,27 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 }
-const trustHost = true;
+
+// Build provider list dynamically based on available credentials
+const providers = [];
+
+if (env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET) {
+  providers.push(
+    GoogleProvider({
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
+    }),
+  );
+}
+
+if (env.DISCORD_CLIENT_ID && env.DISCORD_CLIENT_SECRET) {
+  providers.push(
+    DiscordProvider({
+      clientId: env.DISCORD_CLIENT_ID,
+      clientSecret: env.DISCORD_CLIENT_SECRET,
+    }),
+  );
+}
 
 export const {
   handlers: { GET, POST },
@@ -33,18 +52,9 @@ export const {
     sessionsTable: sessions,
     verificationTokensTable: verificationTokens,
   }),
-  providers: [
-    DiscordProvider({
-      clientSecret: env.DISCORD_CLIENT_SECRET,
-      clientId: env.DISCORD_CLIENT_ID,
-    }),
-    GoogleProvider({
-      clientSecret: env.GOOGLE_CLIENT_SECRET,
-      clientId: env.GOOGLE_CLIENT_ID,
-    }),
-  ],
+  providers,
   secret: env.NEXTAUTH_SECRET,
-  trustHost,
+  trustHost: true,
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
@@ -53,14 +63,11 @@ export const {
         id: user.id,
       },
     }),
-    authorized({ request, auth }) {
-      return !!auth?.user;
-    },
   },
   events: {
     signIn: async ({ isNewUser, user }) => {
       if (isNewUser) {
-        notify(`User ${user.name}(${user.email}) has signed up.`);
+        notify(`New user signed up: ${user.name} (${user.email})`);
       }
     },
   },

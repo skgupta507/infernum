@@ -28,12 +28,12 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       {/* Header */}
       <div className="mb-8 space-y-2">
         <div className="flex items-center gap-2 mb-1">
-          <Flame className="w-4 h-4 text-crimson-600" strokeWidth={1.5} />
-          <h1 className="font-cinzel font-bold text-2xl text-white tracking-wide glow-text-subtle">
+          <Flame className="w-4 h-4 text-brand-600" strokeWidth={1.5} />
+          <h1 className="font-heading font-bold text-2xl text-white tracking-wide glow-text-subtle">
             Search the Realm
           </h1>
         </div>
-        <p className="text-muted-foreground text-sm font-crimson pl-6">
+        <p className="text-muted-foreground text-sm font-sans pl-6">
           Enter a drama title, genre, or actor to uncover your next obsession.
         </p>
       </div>
@@ -48,7 +48,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         className="flex gap-2 max-w-xl mb-10"
       >
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-crimson-700" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-600" />
           <Input
             name="q"
             defaultValue={query}
@@ -78,12 +78,12 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           />
           {(!results.results || results.results.length === 0) ? (
             <div className="flex flex-col items-center justify-center py-20 text-center space-y-4">
-              <div className="w-12 h-12 rounded-sm border border-crimson-900/40 bg-crimson-950/20 flex items-center justify-center">
-                <Search className="w-6 h-6 text-crimson-700" strokeWidth={1.5} />
+              <div className="w-12 h-12 rounded-sm border border-brand-900/40 bg-brand-950/20 flex items-center justify-center">
+                <Search className="w-6 h-6 text-brand-600" strokeWidth={1.5} />
               </div>
               <div>
-                <p className="font-cinzel text-white text-sm">No dramas found</p>
-                <p className="text-muted-foreground text-xs mt-1 font-crimson">
+                <p className="font-heading text-white text-sm">No dramas found</p>
+                <p className="text-muted-foreground text-xs mt-1 font-sans">
                   Try a different title or check your spelling
                 </p>
               </div>
@@ -112,9 +112,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
       {!query && (
         <div className="flex flex-col items-center justify-center py-24 text-center space-y-4">
-          <Flame className="w-10 h-10 text-crimson-800 animate-flicker" strokeWidth={1.5} />
-          <p className="font-cinzel text-white text-sm tracking-wider">AWAITING YOUR QUERY</p>
-          <p className="text-muted-foreground text-xs font-crimson max-w-xs">
+          <Flame className="w-10 h-10 text-brand-700 animate-flicker" strokeWidth={1.5} />
+          <p className="font-heading text-white text-sm tracking-wider">AWAITING YOUR QUERY</p>
+          <p className="text-muted-foreground text-xs font-sans max-w-xs">
             Type above to search thousands of Korean dramas across all genres
           </p>
         </div>

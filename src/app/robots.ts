@@ -1,15 +1,16 @@
 import type { MetadataRoute } from "next";
-import { headers } from "next/headers";
+import { siteConfig } from "@/config/site";
 
+// Static robots.txt — no need for dynamic headers in Next.js 15
 export default function robots(): MetadataRoute.Robots {
-  const headersList = headers();
-  const domain = headersList.get("host") as string;
-
   return {
-    rules: {
-      userAgent: "*",
-      disallow: "/api/",
-    },
-    sitemap: `https://${domain}/sitemap.xml`,
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/signout"],
+      },
+    ],
+    sitemap: `${siteConfig.url}/sitemap.xml`,
   };
 }

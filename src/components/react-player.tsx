@@ -2,7 +2,6 @@
 
 import { useLocalStorage } from "@/hooks/use-local-storage";
 import { updateVideoProgress as updateProgress } from "@/lib/actions";
-import { loglib } from "@loglib/tracker";
 import { useState, useTransition } from "react";
 import ReactPlayer, { type ReactPlayerProps } from "react-player";
 import type { OnProgressProps } from "react-player/base";
@@ -22,24 +21,22 @@ export default function ReactPlayerAsVideo({
   seekTo,
   dramaId,
 }: Props) {
-  const storageName = `kd-${slug}-${number}`;
+  const storageName = `infernum-${slug}-${number}`;
   const initialMedia = JSON.stringify({
     loadedSeconds: 0,
     playedSeconds: 0,
     loaded: 0,
     played: 0,
   });
+
   const [media, setMedia, rmMedia] = useLocalStorage(storageName, initialMedia);
   const parsedStoredItem: OnProgressProps = JSON.parse(media);
+
   const [isSeeking, setIsSeeking] = useState(false);
   const [progress, setProgress] = useState<OnProgressProps>(parsedStoredItem);
-  const [playbackRate, setPlaybackRate] = useLocalStorage(
-    "kd-playbackrate",
-    "1",
-  );
+  const [playbackRate, setPlaybackRate] = useLocalStorage("infernum-playbackrate", "1");
 
   const seekSeconds = seekTo ?? progress.playedSeconds;
-
   const [_, startTransition] = useTransition();
 
   const handlePause = () => {
@@ -57,9 +54,7 @@ export default function ReactPlayerAsVideo({
   };
 
   const handleReady = (player: ReactPlayer) => {
-    if (isSeeking) {
-      return;
-    }
+    if (isSeeking) return;
     player.seekTo(seekSeconds);
   };
 
@@ -68,20 +63,17 @@ export default function ReactPlayerAsVideo({
       url={url}
       width="100%"
       height="100%"
-      controls={true}
+      controls
       loop={false}
       onEnded={handleEnded}
       onReady={handleReady}
-      onPlay={() => loglib.track(`Playing ${dramaId}`, { title: slug })}
       playbackRate={Number(playbackRate)}
-      onSeek={(number) => {
-        setIsSeeking(true);
-      }}
+      onSeek={() => setIsSeeking(true)}
       onProgress={(state) => {
-        setProgress({ ...state, playedSeconds: state.playedSeconds });
+        setProgress(state);
       }}
-      onDuration={(number) => {
-        setProgress({ ...progress, loadedSeconds: number });
+      onDuration={(duration) => {
+        setProgress((prev) => ({ ...prev, loadedSeconds: duration }));
       }}
       onPause={handlePause}
       onBuffer={handlePause}

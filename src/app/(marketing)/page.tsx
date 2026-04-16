@@ -1,109 +1,73 @@
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Flame, Play, ChevronRight, Tv2, Shield, Zap } from "lucide-react";
+import { ChevronRight, Play, Tv2, Shield, Zap } from "lucide-react";
 import Link from "next/link";
 
 export default function MarketingPage() {
   return (
-    <div className="relative min-h-screen bg-[#050000] flex flex-col overflow-hidden">
-      {/* Background atmosphere */}
+    <div className="relative min-h-screen bg-[#0f1117] flex flex-col overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_-20%,rgba(100,0,0,0.2)_0%,transparent_60%)]" />
-        <div className="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
-        {/* Grid texture */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: "linear-gradient(rgba(139,0,0,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(139,0,0,0.5) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(14,165,233,0.1)_0%,transparent_60%)]" />
+        <div className="absolute inset-0 opacity-[0.02]"
+          style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
       </div>
 
-      {/* Nav */}
-      <header className="relative z-10 container flex h-16 items-center justify-between">
+      {/* Navbar */}
+      <header className="relative z-10 container flex h-14 items-center justify-between">
         <div className="flex items-center gap-2">
-          <Flame className="w-5 h-5 text-crimson-600" strokeWidth={1.5} />
-          <span className="font-cinzel font-black text-lg tracking-[0.2em] text-white glow-text-subtle">
-            INFERNUM
-          </span>
+          <div className="w-7 h-7 rounded bg-brand-600 flex items-center justify-center">
+            <Zap className="w-4 h-4 text-white fill-white" strokeWidth={2} />
+          </div>
+          <span className="font-heading text-xl text-white tracking-widest">INFERNUM</span>
         </div>
         <div className="flex items-center gap-3">
-          <Link
-            href="/home"
-            className="text-muted-foreground text-sm font-cinzel tracking-wider hover:text-white transition-colors"
-          >
-            Browse
-          </Link>
-          <Link
-            href="/signin"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-          >
-            Sign In
-          </Link>
+          <Link href="/home" className="text-sm text-muted-foreground hover:text-white transition-colors">Browse</Link>
+          <Link href="/signin" className={buttonVariants({ variant: "outline", size: "sm" })}>Sign In</Link>
         </div>
       </header>
 
       {/* Hero */}
       <main className="relative z-10 flex-1 flex items-center">
         <div className="container px-4">
-          <div className="max-w-3xl mx-auto text-center space-y-8 py-20">
-            {/* Tag */}
-            <div className="flex justify-center">
-              <Badge variant="genre" className="px-4 py-1.5 text-xs tracking-[0.3em] animate-fade-up">
-                <Flame className="w-3 h-3 mr-1.5 animate-flicker" />
-                KOREAN DRAMA STREAMING
-              </Badge>
-            </div>
+          <div className="max-w-2xl mx-auto text-center space-y-8 py-20">
+            <Badge variant="default" className="px-4 py-1.5 text-xs tracking-widest animate-fade-up">
+              KOREAN DRAMA STREAMING
+            </Badge>
 
-            {/* Title */}
-            <div className="space-y-2" style={{ animationDelay: "0.1s" }}>
-              <h1 className="font-cinzel font-black text-5xl lg:text-7xl xl:text-8xl text-white leading-[0.95] tracking-tight">
-                <span className="block glow-text text-crimson-400">BORN IN</span>
-                <span className="block text-white">DARKNESS,</span>
-                <span className="block glow-text-subtle">STREAM THE FIRE</span>
-              </h1>
-            </div>
+            <h1 className="font-heading text-6xl lg:text-8xl text-white leading-none tracking-wide">
+              <span className="block">STREAM</span>
+              <span className="block text-brand-400 glow-text-subtle">THE FINEST</span>
+              <span className="block">K-DRAMAS</span>
+            </h1>
 
-            {/* Subtitle */}
-            <p className="font-crimson text-lg lg:text-xl text-white/60 max-w-xl mx-auto leading-relaxed">
-              Enter the realm where shadows tell stories. INFERNUM delivers the finest Korean dramas — 
-              revenge, obsession, passion, betrayal — all in cinematic darkness.
+            <p className="text-muted-foreground text-lg max-w-md mx-auto leading-relaxed">
+              Romance, revenge, fantasy, thriller — thousands of Korean dramas, all in one place. Free forever.
             </p>
 
-            {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/home"
-                className={buttonVariants({ variant: "ember", size: "xl" })}
-              >
-                <Play className="w-5 h-5 fill-white" />
-                Enter the Realm
+              <Link href="/home" className={buttonVariants({ variant: "default", size: "lg" })}>
+                <Play className="w-4 h-4 fill-white" /> Start Watching
               </Link>
-              <Link
-                href="/signin"
-                className={buttonVariants({ variant: "outline", size: "xl" })}
-              >
-                Sign In
-                <ChevronRight className="w-4 h-4" />
+              <Link href="/signin" className={buttonVariants({ variant: "outline", size: "lg" })}>
+                Sign In <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
 
-            {/* Features row */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-crimson-950/40">
+            <div className="grid grid-cols-3 gap-4 pt-8 border-t border-border/50">
               {[
-                { icon: Tv2, title: "All K-Dramas", desc: "Thousands of titles from the shadows" },
-                { icon: Zap, title: "HD Streaming", desc: "Cinematic quality, zero compromise" },
-                { icon: Shield, title: "Free Access", desc: "No hidden fees. No chains." },
+                { icon: Tv2, title: "All Genres", desc: "Romance, thriller, fantasy & more" },
+                { icon: Zap, title: "HD Quality", desc: "Sharp streams, no buffering" },
+                { icon: Shield, title: "Free Access", desc: "No subscription required" },
               ].map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="text-center space-y-1">
-                  <div className="flex justify-center mb-2">
-                    <div className="w-8 h-8 rounded-sm border border-crimson-900/40 bg-crimson-950/30 flex items-center justify-center">
-                      <Icon className="w-4 h-4 text-crimson-500" strokeWidth={1.5} />
+                <div key={title} className="text-center space-y-2">
+                  <div className="flex justify-center">
+                    <div className="w-9 h-9 rounded border border-border bg-secondary flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-brand-400" strokeWidth={1.5} />
                     </div>
                   </div>
-                  <p className="font-cinzel text-xs text-white tracking-wider">{title}</p>
-                  <p className="text-xs text-muted-foreground font-crimson">{desc}</p>
+                  <p className="text-sm font-semibold text-foreground">{title}</p>
+                  <p className="text-xs text-muted-foreground">{desc}</p>
                 </div>
               ))}
             </div>
@@ -111,11 +75,8 @@ export default function MarketingPage() {
         </div>
       </main>
 
-      {/* Bottom quote */}
-      <div className="relative z-10 container pb-8 text-center">
-        <p className="font-cinzel text-xs tracking-[0.4em] text-crimson-700/60">
-          WHERE SHADOWS TELL STORIES
-        </p>
+      <div className="relative z-10 container pb-6 text-center">
+        <p className="text-xs text-muted-foreground/40 tracking-widest">CRAFTED BY SUNIL</p>
       </div>
     </div>
   );

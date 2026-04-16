@@ -1,3 +1,4 @@
+// ─── Navigation / Config ──────────────────────────────────────────────────────
 export type NavItem = {
   title: string;
   href: string;
@@ -10,51 +11,79 @@ export type SiteConfig = {
   name: string;
   description: string;
   url: string;
-  links: {
-    twitter: string;
-    github: string;
-  };
-  mainNav: {
-    title: string;
-    href: string;
-  }[];
+  links: { twitter: string; github: string };
+  mainNav: { title: string; href: string }[];
 };
 
-interface Resp<T> {
-  currentPage: number;
-  hasNextPage: boolean;
-  results: T;
+// ─── Xyra Stream API — shared primitives ─────────────────────────────────────
+
+/** A drama card as returned by /home, /popular, /latest, /search, etc. */
+export interface XyraDramaCard {
+  id: string;           // e.g. "drama-detail/some-drama-slug"
+  title: string;
+  image: string;
+  url?: string;
+  status?: string;      // "Ongoing" | "Completed" | "Upcoming"
+  type?: string;        // "KDrama" | "Movie" etc.
 }
 
-/**
- * A TypeScript type alias called `Prettify`.
- * It takes a type as its argument and returns a new type that has the same properties as the original type,
- * but the properties are not intersected. This means that the new type is easier to read and understand.
- */
-type Prettify<T> = {
-  [K in keyof T]: T[K];
-} & {};
+/** An episode entry inside /info */
+export interface XyraEpisode {
+  id: string;           // episode slug — used for /stream
+  title: string;
+  episode: number;
+  subType: "SUB" | "DUB" | "RAW";
+  releaseDate: string;
+  url?: string;
+}
 
-export interface Featured {
+/** Full drama info from /info */
+export interface XyraDramaInfo {
   id: string;
   title: string;
   image: string;
+  description: string;
+  otherNames?: string[];
+  genres?: string[];
+  releaseDate?: number | string;
+  status?: "ongoing" | "completed" | "upcoming";
+  episodes?: XyraEpisode[];
 }
 
-interface RecentResult extends Featured {
-  type: "RAW" | "SUB";
-  time: string;
-  number: number;
-}
-
-interface SearchResult extends Featured {
+/** A streaming source */
+export interface XyraSource {
   url: string;
+  isM3U8: boolean;
+  quality?: string;
 }
 
-export type Recent = Prettify<Resp<RecentResult[]>>;
-export type TopAiring = Prettify<Resp<Featured[]>>;
-export type Search = Prettify<Resp<SearchResult[]>>;
-export type EpisodeInfo = {
+/** Subtitle track */
+export interface XyraSubtitle {
+  url: string;
+  lang: string;
+}
+
+/** /stream response */
+export interface XyraStreamResult {
+  sources: XyraSource[];
+  subtitles?: XyraSubtitle[];
+  embedUrl?: string;
+}
+
+/** Paginated wrapper used by /search, /popular, /latest, /ongoing, etc. */
+export interface XyraPaged<T> {
+  currentPage: number;
+  hasNextPage: boolean;
+  results: T[];
+}
+
+// ─── Internal aliases (keeps existing code working) ──────────────────────────
+export type Featured    = XyraDramaCard;
+export type TopAiring   = XyraPaged<XyraDramaCard>;
+export type Recent      = XyraPaged<XyraDramaCard>;
+export type Search      = XyraPaged<XyraDramaCard>;
+
+export interface EpisodeInfo {
   title: string;
   id: string;
   dramaId: string;
@@ -65,4 +94,4 @@ export type EpisodeInfo = {
     previous: string | undefined;
     list: { value: string; label: string }[];
   };
-};
+}

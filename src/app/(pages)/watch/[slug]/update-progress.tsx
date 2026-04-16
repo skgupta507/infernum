@@ -48,7 +48,7 @@ export default function UpdateWatchlistButton({
       className={cn("gap-1.5 text-xs", className)}
     >
       {isWatched ? (
-        <><CheckCircle2 className="w-3.5 h-3.5 text-crimson-500" /> Watched</>
+        <><CheckCircle2 className="w-3.5 h-3.5 text-brand-500" /> Watched</>
       ) : (
         <><Circle className="w-3.5 h-3.5" /> Mark Watched</>
       )}

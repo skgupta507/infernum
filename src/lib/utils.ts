@@ -1,4 +1,3 @@
-import { env } from "@/env.mjs";
 import { type ClassValue, clsx } from "clsx";
 import type { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
@@ -8,17 +7,19 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function absoluteUrl(path: string) {
-  const url = env.VERCEL_URL || env.NEXT_PUBLIC_APP_URL;
-  return path.startsWith("/") ? url + path : `${url}/${path}`;
+  const base =
+    process.env.NEXT_PUBLIC_APP_URL ??
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:1999");
+  return path.startsWith("/") ? `${base}${path}` : `${base}/${path}`;
 }
 
 export function generateMetadata({
   description,
   title,
-  opengraphImage = absoluteUrl("/opengraph-image.png"),
+  opengraphImage,
 }: {
   title: string;
-  description: string;
+  description?: string;
   opengraphImage?: string;
 }): Metadata {
   return {
@@ -27,22 +28,12 @@ export function generateMetadata({
     openGraph: {
       title,
       description,
-      type: "website",
-      url: absoluteUrl("/home"),
-      images: [
-        {
-          url: opengraphImage,
-          width: 1200,
-          height: 630,
-          alt: "home opengraph image",
-        },
-      ],
+      ...(opengraphImage ? { images: [opengraphImage] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [opengraphImage],
     },
   };
 }

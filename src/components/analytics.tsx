@@ -1,11 +1,12 @@
-import Loglib from "@loglib/tracker/react";
-
+/**
+ * INFERNUM Analytics
+ * 
+ * Loglib has been removed. To add analytics, you can integrate:
+ * - Vercel Analytics: pnpm add @vercel/analytics  → import { Analytics } from "@vercel/analytics/react"
+ * - Posthog: pnpm add posthog-js
+ * - Plausible, Umami, or any other self-hosted option
+ */
 export function Analytics() {
-  return (
-    <Loglib
-      config={{
-        id: "kd_rohi",
-      }}
-    />
-  );
+  // Placeholder — wire up your preferred analytics provider here
+  return null;
 }

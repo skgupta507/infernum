@@ -1,29 +1,26 @@
 import { cn } from "@/lib/utils";
-import { Flame } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 interface SectionHeadingProps {
   title: string;
   subtitle?: string;
   slogan?: string;
+  href?: string;
   className?: string;
 }
 
-export function SectionHeading({ title, subtitle, slogan, className }: SectionHeadingProps) {
+export function SectionHeading({ title, subtitle, slogan, href, className }: SectionHeadingProps) {
   return (
-    <div className={cn("mb-4", className)}>
-      <div className="flex items-center gap-2 mb-1">
-        <Flame className="w-4 h-4 text-crimson-600" strokeWidth={1.5} />
-        <h2 className="font-cinzel font-bold text-xl text-white tracking-wide glow-text-subtle">
-          {title}
-        </h2>
+    <div className={cn("flex items-end justify-between mb-4", className)}>
+      <div>
+        <h2 className="font-heading text-2xl text-white tracking-wider">{title}</h2>
+        {subtitle && <p className="text-muted-foreground text-sm mt-0.5">{subtitle}</p>}
       </div>
-      {subtitle && (
-        <p className="text-muted-foreground text-sm font-crimson pl-6">{subtitle}</p>
-      )}
-      {slogan && (
-        <p className="text-crimson-600/70 text-xs font-cinzel tracking-widest italic pl-6 mt-0.5">
-          "{slogan}"
-        </p>
+      {href && (
+        <Link href={href} className="flex items-center gap-1 text-xs text-brand-400 hover:text-brand-300 font-medium transition-colors">
+          See all <ChevronRight className="w-3.5 h-3.5" />
+        </Link>
       )}
     </div>
   );

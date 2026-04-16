@@ -2,19 +2,12 @@
 
 import { Card } from "@/components/card";
 import { Button } from "@/components/ui/button";
-import { Loader2, Flame } from "lucide-react";
-import { useTransition } from "react";
+import type { Featured } from "@/types";
+import { Loader2, ChevronDown } from "lucide-react";
+import { useState, useTransition } from "react";
 import { loadMore } from "./actions";
-import { useState } from "react";
 
-type Drama = {
-  id: string;
-  title: string;
-  image: string;
-  status?: string;
-};
-
-export function PopularGrid({ initial }: { initial: Drama[] }) {
+export function PopularGrid({ initial }: { initial: Featured[] }) {
   const [dramas, setDramas] = useState(initial);
   const [page, setPage] = useState(1);
   const [isPending, startTransition] = useTransition();
@@ -22,13 +15,13 @@ export function PopularGrid({ initial }: { initial: Drama[] }) {
 
   const handleLoadMore = () => {
     startTransition(async () => {
-      const nextPage = page + 1;
-      const more = await loadMore(nextPage);
-      if (!more || more.length === 0) {
+      const next = page + 1;
+      const more = await loadMore(next);
+      if (!more?.length) {
         setHasMore(false);
       } else {
         setDramas((prev) => [...prev, ...more]);
-        setPage(nextPage);
+        setPage(next);
       }
     });
   };
@@ -43,7 +36,7 @@ export function PopularGrid({ initial }: { initial: Drama[] }) {
               title: drama.title,
               image: drama.image,
               description: drama.status ?? "",
-              slug: drama.id.replace("drama-detail/", ""),
+              slug: drama.id,
             }}
             aspectRatio="portrait"
             width={160}
@@ -55,24 +48,11 @@ export function PopularGrid({ initial }: { initial: Drama[] }) {
 
       {hasMore && (
         <div className="flex justify-center">
-          <Button
-            onClick={handleLoadMore}
-            disabled={isPending}
-            variant="outline"
-            size="lg"
-            className="min-w-[200px]"
-          >
-            {isPending ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Summoning…
-              </>
-            ) : (
-              <>
-                <Flame className="w-4 h-4" strokeWidth={1.5} />
-                Load More
-              </>
-            )}
+          <Button onClick={handleLoadMore} disabled={isPending} variant="outline" size="lg" className="min-w-[180px] gap-2">
+            {isPending
+              ? <><Loader2 className="w-4 h-4 animate-spin" /> Loading…</>
+              : <><ChevronDown className="w-4 h-4" /> Load More</>
+            }
           </Button>
         </div>
       )}

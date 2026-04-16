@@ -10,21 +10,12 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/sunilbuilds",
   },
   mainNav: [
-    {
-      title: "home",
-      href: "/home",
-    },
-    {
-      title: "popular",
-      href: "/popular",
-    },
-    {
-      title: "genres",
-      href: "/genres",
-    },
+    { title: "Home", href: "/home" },
+    { title: "Popular", href: "/popular" },
+    { title: "Search", href: "/search" },
   ],
 };
 
 export const placeholderImage = (str: string) => {
-  return `https://placehold.co/400x600/0a0000/8B0000?font=montserrat&text=${encodeURI(str)}`;
+  return `https://placehold.co/400x600/111111/ffffff?font=montserrat&text=${encodeURI(str)}`;
 };

@@ -5,30 +5,21 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-interface MainNavProps {
-  items?: NavItem[];
-}
-
-export function MainNav({ items }: MainNavProps) {
+export function MainNav({ items }: { items?: NavItem[] }) {
   const pathname = usePathname();
-
   if (!items?.length) return null;
-
   return (
     <nav className="hidden md:flex items-center gap-1">
       {items.map((item) => {
         const active = pathname.startsWith(item.href);
         return (
-          <Link
-            key={item.href}
-            href={item.href}
+          <Link key={item.href} href={item.href}
             className={cn(
-              "px-4 py-2 font-cinzel text-xs tracking-[0.2em] uppercase transition-all rounded-sm",
+              "px-3 py-1.5 text-sm font-medium rounded transition-all",
               active
-                ? "text-crimson-400 bg-crimson-950/60 glow-text-subtle"
+                ? "text-white bg-white/8"
                 : "text-muted-foreground hover:text-white hover:bg-white/5",
-            )}
-          >
+            )}>
             {item.title}
           </Link>
         );

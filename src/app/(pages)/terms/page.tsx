@@ -78,14 +78,14 @@ export default function TermsPage() {
         {/* Header */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <Flame className="w-5 h-5 text-crimson-600" strokeWidth={1.5} />
-            <span className="font-cinzel text-xs tracking-[0.3em] text-crimson-600 uppercase">Legal</span>
+            <Flame className="w-5 h-5 text-brand-600" strokeWidth={1.5} />
+            <span className="font-heading text-xs tracking-[0.3em] text-brand-600 uppercase">Legal</span>
           </div>
-          <h1 className="font-cinzel font-black text-4xl text-white glow-text-subtle">
+          <h1 className="font-heading font-black text-4xl text-white glow-text-subtle">
             Terms & Conditions
           </h1>
-          <p className="text-muted-foreground text-sm font-crimson">Last updated: January 2025</p>
-          <p className="font-crimson text-base text-white/60 leading-relaxed">
+          <p className="text-muted-foreground text-sm font-sans">Last updated: January 2025</p>
+          <p className="font-sans text-base text-white/60 leading-relaxed">
             Please read these Terms and Conditions carefully before using INFERNUM. 
             Your use of the Platform constitutes your agreement to these terms.
           </p>
@@ -96,10 +96,10 @@ export default function TermsPage() {
         <div className="space-y-8">
           {sections.map((section, i) => (
             <section key={i} className="space-y-3">
-              <h2 className="font-cinzel text-lg font-bold text-white">
+              <h2 className="font-heading text-lg font-bold text-white">
                 {i + 1}. {section.title}
               </h2>
-              <div className="font-crimson text-sm text-white/65 leading-relaxed whitespace-pre-line pl-4 border-l border-crimson-900/30">
+              <div className="font-sans text-sm text-white/65 leading-relaxed whitespace-pre-line pl-4 border-l border-brand-900/30">
                 {section.content}
               </div>
             </section>
@@ -108,7 +108,7 @@ export default function TermsPage() {
 
         <div className="infernal-divider" />
 
-        <p className="font-crimson text-xs text-muted-foreground text-center">
+        <p className="font-sans text-xs text-muted-foreground text-center">
           INFERNUM — Forged in darkness by Sunil. All rights reserved.
         </p>
       </div>
